@@ -46,15 +46,20 @@ def gradient_descent(objective, derivative, n_iter, step_size,x,y):
 
 		# report progress
         print('%d & f(%s) & %.5f \\\\' % (i, w, w_eval))
+
     return [w, w_eval]
 
 # define the total iterations
 n_iter = 100
 # define the step size
-step_size = 0.05
+step_size = 0.12
 
 x = list(range(-50,51))
 y = numpy.tile([-1,1], 100)
+for i in range(5):
+    y[i] = -1*y[i]
+    y[100-i] = -1*y[i]
+    print(x[i], x[100-i],y[i],y[100-i])
 # perform the gradient descent search
 best, score = gradient_descent(objective, derivative, n_iter, step_size, x,y)
 print('Done!')
