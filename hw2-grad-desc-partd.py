@@ -52,7 +52,7 @@ def gradient_descent(objective, derivative, n_iter, step_size,x,y):
 # define the total iterations
 n_iter = 100
 # define the step size
-step_size = 0.12
+step_size = 0.005
 
 x = list(range(-50,51))
 y = numpy.tile([-1,1], 100)
