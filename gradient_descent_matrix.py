@@ -1,10 +1,12 @@
 import numpy as np
+import time
+
 def gradient_descent(A, b, T, stepsize):
     step = 0.1
     m,n = A.shape
-    print(A.shape)
+    # print(A.shape)
     theta = np.zeros((n,1))
-    print("theta shape", theta.shape)
+    # print("theta shape", theta.shape)
     f = np.zeros(T)
 
     for i in range(T):
@@ -26,10 +28,18 @@ eta = np.random.normal(0, 0.5, (m,1))
 b = A.dot(x_star) + eta
 
 T = 50 #number of steps
+start = time.time()
 theta, f = gradient_descent(A,b, T, 1/10)
-print(theta, f)
+end = time.time()
+print("elapsed time for gd: ", end-start)
+
+print("function value: ", f[T-1])
+print("distance to x_star: ", np.linalg.norm(theta[T-1]-x_star))
 
 #part e inverse
-
+start = time.time()
 x_st = np.linalg.inv((np.transpose(A).dot(A))).dot(np.transpose(A)).dot(b)
-print("X", x_st)
+end = time.time()
+print("elapsed time for inverse: ", end-start)
+# print(x_st)
+# print("X", x_st)
