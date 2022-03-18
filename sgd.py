@@ -41,6 +41,8 @@ def gradient_descent( n_iter, a,b, learning_rate):
         gyt = gradient_hy(y[j], b[i])
 		# take a step
         # learning_rate = 0.1/(j+1)
+        learning_rate = 0.1/math.sqrt(j+1)
+
         x[j+1] = x[j] - learning_rate * gxt
         y[j+1] = y[j] - learning_rate * gyt
 
@@ -48,7 +50,7 @@ def gradient_descent( n_iter, a,b, learning_rate):
 		# evaluate candidate point
         f_eval = objective(x[j+1],y[j+1],a,b)
 		# report progress
-        print('%d & f(%.5f,%.5f) & %.5f \\\\' % (j, x[j+1], y[j+1], f_eval))
+        print('t=%d  f(x=%.5f,y=%.5f) = %.5f \\\\' % (j, x[j+1], y[j+1], f_eval))
     return [x, y, f_eval]
 
 # define the total iterations
